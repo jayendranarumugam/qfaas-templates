@@ -22,15 +22,7 @@ RUN pip install -r requirements.txt
 
 RUN mkdir -p function
 
-# Install qfaas_local package
-# This is a local package that is not available on PyPI, so we install it directly
-USER root
-COPY qfaas ./qfaas
-RUN pip install --use-pep517 -e ./qfaas
-RUN chown -R app:app ./qfaas
-RUN python -c "import qfaas; print(qfaas.__file__)"
 
-USER app
 RUN touch ./function/__init__.py
 WORKDIR /home/app/function/
 COPY function/requirements.txt	.

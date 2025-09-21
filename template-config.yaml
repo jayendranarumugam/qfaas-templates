@@ -1,0 +1,69 @@
+# Quantum FaaS Template Configuration Schema
+# This file defines the standard structure for Quantum FaaS templates
+
+# Each template directory should contain:
+# - template.yml (OpenFaaS configuration)
+# - index.py (main quantum function)
+# - Dockerfile (container configuration)
+# - requirements.txt (Python dependencies)
+
+template_schema:
+  required_files:
+    - template.yml     # OpenFaaS configuration
+    - index.py        # Main quantum function
+    - Dockerfile      # Container with quantum base image
+    - requirements.txt # Additional Python dependencies
+  
+  optional_files:
+    - function/       # Additional function code (Q# specific)
+
+# Docker base images used in templates
+docker_base_images:
+  qiskit: "Custom Qiskit image (build from docker/base_image/qiskit/)"
+  cirq: "Custom Cirq image (build from docker/base_image/cirq/)"
+  braket: "python:3.10-slim-bullseye"
+  qsharp: "mcr.microsoft.com/quantum/iqsharp-base:latest"
+
+# Custom base image locations
+custom_base_images:
+  directory: "docker/base_image/"
+  qiskit: "docker/base_image/qiskit/"
+  cirq: "docker/base_image/cirq/"
+  braket: "docker/base_image/braket/"
+  qsharp: "docker/base_image/qsharp/"
+
+  metadata:
+    name: ""
+    description: ""
+    language: ""  # qiskit, cirq, braket, qsharp
+    provider: "openfaas"
+    framework: ""  # quantum computing framework
+    tags: []
+    author: ""
+    version: ""
+    license: ""
+
+# Supported quantum frameworks
+supported_frameworks:
+  - qiskit      # IBM Qiskit
+  - cirq        # Google Cirq
+  - braket      # AWS Braket
+  - qsharp      # Microsoft Q#
+  - pennylane   # Xanadu PennyLane
+  - forest      # Rigetti Forest
+
+# Runtime
+runtime:
+  - python3.8+
+
+# Provider
+provider:
+  - openfaas
+
+# Quantum computing categories
+categories:
+  - quantum-algorithms
+  - quantum-simulation
+  - quantum-optimization
+  - quantum-machine-learning
+  - quantum-cryptography

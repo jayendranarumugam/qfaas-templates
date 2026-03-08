@@ -1,5 +1,5 @@
 FROM ghcr.io/openfaas/of-watchdog:0.9.11 as watchdog
-FROM jayendranarumugam/qiskit-py310:1.4.1
+FROM jayendranarumugam/qiskit-py310:2.2.0
 
 USER root
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
